@@ -22,7 +22,8 @@
   "dependencies": {
     "prop-types": "^15.6.2",
     "react-native-otp-verify": "1.1.4",
-    "react-native-sms-retriever-api": "1.0.3"
+    "react-native-sms-retriever-api": "1.0.3",
+    "react-native-sms-retriever": "1.1.1"
   },
   "peerDependencies": {
     "react-native": ">=0.20.0",
