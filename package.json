@@ -20,7 +20,8 @@
     "url": "git@github.com:naveenvignesh5/react-native-otp-textinput.git"
   },
   "dependencies": {
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "react-native-otp-verify": "1.1.4"
   },
   "peerDependencies": {
     "react-native": ">=0.20.0",

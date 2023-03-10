@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
+import RNOtpVerify from 'react-native-otp-verify';
 
 const styles = StyleSheet.create({
   container: {
@@ -67,6 +68,15 @@ class OTPTextView extends Component {
       );
     }
   };
+  otpHandler = (message) => {
+    console.log('SMS :: ', message);
+  };
+
+  componentDidMount() {
+    RNOtpVerify.getOtp()
+      .then((p) => RNOtpVerify.addListener(this.otpHandler))
+      .catch((p) => console.log(p));
+  }
 
   basicValidation = (text) => {
     const validText = /^[0-9a-zA-Z]+$/;
