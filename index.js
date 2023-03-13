@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
-// import RNOtpVerify from 'react-native-otp-verify';
+import RNOtpVerify from 'react-native-otp-verify';
 // import SmsRetriever from 'react-native-sms-retriever-api';
-import SmsRetriever from 'react-native-sms-retriever';
+// import SmsRetriever from 'react-native-sms-retriever';
 
 const styles = StyleSheet.create({
   container: {
@@ -74,19 +74,20 @@ class OTPTextView extends Component {
     console.log('SMS :: ', message);
   };
 
-  async componentDidMount() {
-    try {
-      const registered = await SmsRetriever.startSmsRetriever();
-      if (registered) {
-        SmsRetriever.addSmsListener(event => {
-          console.log(event.message);
-          SmsRetriever.removeSmsListener();
-        }); 
-      }
-    } catch (error) {
-      console.log(JSON.stringify(error));
-    }
-  }
+  // async componentDidMount() {
+  //   try {
+  //     const registered = await SmsRetriever.startSmsRetriever();
+  //     if (registered) {
+  //       SmsRetriever.addSmsListener(event => {
+  //         console.log(event.message);
+  //         SmsRetriever.removeSmsListener();
+  //       }); 
+  //     }
+  //   } catch (error) {
+  //     console.log(JSON.stringify(error));
+  //   }
+  // }
+
   // componentDidMount() {
   //   SmsRetriever.getOtp()
   //     .then((p) => SmsRetriever.addListener(this.otpHandler))
@@ -96,11 +97,11 @@ class OTPTextView extends Component {
   //   console.log('SMS :: ', message);
   // };
 
-  // componentDidMount() {
-  //   RNOtpVerify.getOtp()
-  //     .then((p) => RNOtpVerify.addListener(this.otpHandler))
-  //     .catch((p) => console.log(p));
-  // }
+  componentDidMount() {
+    RNOtpVerify.getOtp()
+      .then((p) => RNOtpVerify.addListener(this.otpHandler))
+      .catch((p) => console.log(p));
+  }
 
   basicValidation = (text) => {
     const validText = /^[0-9a-zA-Z]+$/;
